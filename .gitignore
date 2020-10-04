@@ -1,4 +1,2 @@
 .idea/
-.gradle/
-build/
-gradle/
+target/
