@@ -5,10 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.ranzeplay</groupId>
-    <artifactId>SimuCalc</artifactId>
+    <artifactId>simucalc</artifactId>
     <version>0.0.1-alpha</version>
+    <packaging>jar</packaging>
 
+    <name>SimuCalc</name>
+    <description>A calculator which can do the calculation like your BRAIN</description>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>

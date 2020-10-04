@@ -14,7 +14,7 @@ A calculator which can do the calculation like your **BRAIN**
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/Ranzeplay/SimuCalc)
 
 #### Build Status (Azure DevOps Pipeline)
-[![Build Status](https://dev.azure.com/ranzeplay/SimuCalc/_apis/build/status/SimuCalc-Gradle-CI?branchName=master)](https://dev.azure.com/ranzeplay/SimuCalc/_build/latest?definitionId=9&branchName=master)
+[![Build status](https://dev.azure.com/ranzeplay/SimuCalc/_apis/build/status/SimuCalc-Maven-CI)](https://dev.azure.com/ranzeplay/SimuCalc/_build/latest?definitionId=-1)
 
 #### Code Quality (CodeFactor)
 [![CodeFactor](https://www.codefactor.io/repository/github/ranzeplay/simucalc/badge)](https://www.codefactor.io/repository/github/ranzeplay/simucalc)
