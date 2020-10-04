@@ -92,7 +92,7 @@ public class LevelOne {
 				int tb = bInteger.charAt(i) - '0';
 				int tr = ta - tb - (xFlag ? 1 : 0);
 
-				xFlag = tr <= 10;
+				xFlag = tr <= -10;
 				if (xFlag) tr += 10;
 
 				integerResult.insert(0, tr);
