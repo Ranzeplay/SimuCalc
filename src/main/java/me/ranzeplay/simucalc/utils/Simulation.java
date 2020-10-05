@@ -2,7 +2,7 @@ package me.ranzeplay.simucalc.utils;
 
 import java.util.AbstractMap;
 
-public class Simulations {
+public class Simulation {
 	/**
 	 * To compare numbers in String which is bigger
 	 *
@@ -29,8 +29,8 @@ public class Simulations {
 
 	public static String[] AlignDecimalPoint(String a, String b) {
 		// Integer part
-		StringBuilder aInteger = new StringBuilder("0" + a.substring(0, a.indexOf('.')));
-		StringBuilder bInteger = new StringBuilder("0" + b.substring(0, b.indexOf('.')));
+		var aInteger = new StringBuilder("0" + a.substring(0, a.indexOf('.')));
+		var bInteger = new StringBuilder("0" + b.substring(0, b.indexOf('.')));
 		if (aInteger.length() > bInteger.length()) {
 			bInteger.insert(0, "0".repeat(aInteger.length() - bInteger.length() + 2), 0, aInteger.length() - bInteger.length());
 		} else if (aInteger.length() < bInteger.length()) {
@@ -38,12 +38,12 @@ public class Simulations {
 		}
 
 		// Decimal part
-		StringBuilder aDecimal = new StringBuilder(a.substring(a.indexOf('.') + 1));
-		StringBuilder bDecimal = new StringBuilder(b.substring(b.indexOf('.') + 1));
+		var aDecimal = new StringBuilder(a.substring(a.indexOf('.') + 1) + "0");
+		var bDecimal = new StringBuilder(b.substring(b.indexOf('.') + 1) + "0");
 		if (aDecimal.length() > bDecimal.length()) {
-			bDecimal.insert(0, "0".repeat(aDecimal.length() - bDecimal.length() + 2), bDecimal.length(), aDecimal.length() - bDecimal.length() + 1);
+			bDecimal.append("0".repeat(aDecimal.length() - bDecimal.length()));
 		} else if (bDecimal.length() > aDecimal.length()) {
-			aDecimal.insert(0, "0".repeat(bDecimal.length() - aDecimal.length() + 2), aDecimal.length(), bDecimal.length() - aDecimal.length() + 1);
+			aDecimal.append("0".repeat(bDecimal.length() - aDecimal.length()));
 		}
 
 		return new String[]{aInteger + "." + aDecimal, bInteger + "." + bDecimal};

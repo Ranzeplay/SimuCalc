@@ -1,7 +1,7 @@
 package me.ranzeplay.simucalc.calculate.grade;
 
 import me.ranzeplay.simucalc.models.Term;
-import me.ranzeplay.simucalc.utils.Simulations;
+import me.ranzeplay.simucalc.utils.Simulation;
 
 public class LevelOne {
 	public static Term Add(Term a, Term b) {
@@ -16,7 +16,7 @@ public class LevelOne {
 		}
 
 		if (a.getOperator() == '+' && b.getOperator() == '-') {
-			if (Simulations.CompareNumberAbs(a.getNumber(), b.getNumber()) < 0) {
+			if (Simulation.CompareNumberAbs(a.getNumber(), b.getNumber()) < 0) {
 				a.setOperator('-');
 				b.setOperator('+');
 				Term result = Add(b, a);
@@ -33,7 +33,7 @@ public class LevelOne {
 
 		// Split integer part and decimal part && Align decimal point
 
-		String[] pair = Simulations.AlignDecimalPoint(a.getNumber(), b.getNumber());
+		var pair = Simulation.AlignDecimalPoint(a.getNumber(), b.getNumber());
 		String aInteger = pair[0].split("\\.")[0];
 		String aDecimal = pair[0].split("\\.")[1];
 		String bInteger = pair[1].split("\\.")[0];
@@ -75,7 +75,7 @@ public class LevelOne {
 			// Do a Sub operation
 
 			// Sub decimal part
-			StringBuilder decimalResult = new StringBuilder();
+			var decimalResult = new StringBuilder();
 			for (int i = aDecimal.length() - 1; i >= 0; i--) {
 				int ta = aDecimal.charAt(i) - '0';
 				int tb = bDecimal.charAt(i) - '0';
@@ -88,7 +88,7 @@ public class LevelOne {
 			}
 
 			// Sub integer part
-			StringBuilder integerResult = new StringBuilder();
+			var integerResult = new StringBuilder();
 			for (int i = aInteger.length() - 1; i >= 0; i--) {
 				int ta = aInteger.charAt(i) - '0';
 				int tb = bInteger.charAt(i) - '0';
