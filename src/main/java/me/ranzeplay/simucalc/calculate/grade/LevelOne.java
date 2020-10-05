@@ -1,6 +1,7 @@
 package me.ranzeplay.simucalc.calculate.grade;
 
 import me.ranzeplay.simucalc.models.Term;
+import me.ranzeplay.simucalc.utils.Simulations;
 
 public class LevelOne {
 	public static Term Add(Term a, Term b) {
@@ -14,28 +15,29 @@ public class LevelOne {
 			return stageResult;
 		}
 
+		if (a.getOperator() == '+' && b.getOperator() == '-') {
+			if (Simulations.CompareNumberAbs(a.getNumber(), b.getNumber()) < 0) {
+				a.setOperator('-');
+				b.setOperator('+');
+				Term result = Add(b, a);
+				result.setOperator('-');
+				return result;
+			}
+		}
+
 		if (a.getOperator() == '-' && b.getOperator() == '+') {
 			return Add(b, a);
 		}
 
-		// Process
+		// Process (limited conditions)
 
 		// Split integer part and decimal part && Align decimal point
-		StringBuilder aInteger = new StringBuilder("0" + a.getNumber().substring(0, a.getNumber().indexOf('.')));
-		StringBuilder bInteger = new StringBuilder("0" + b.getNumber().substring(0, b.getNumber().indexOf('.')));
-		if (aInteger.length() > bInteger.length()) {
-			bInteger.insert(0, "0".repeat(aInteger.length() - bInteger.length() + 2), 0, aInteger.length() - bInteger.length());
-		} else if (aInteger.length() < bInteger.length()) {
-			aInteger.insert(0, "0".repeat(bInteger.length() - aInteger.length() + 2), 0, bInteger.length() - aInteger.length());
-		}
 
-		StringBuilder aDecimal = new StringBuilder(a.getNumber().substring(a.getNumber().indexOf('.') + 1));
-		StringBuilder bDecimal = new StringBuilder(b.getNumber().substring(b.getNumber().indexOf('.') + 1));
-		if (aDecimal.length() > bDecimal.length()) {
-			bDecimal.insert(0, "0".repeat(aDecimal.length() - bDecimal.length() + 2), bDecimal.length(), aDecimal.length() - bDecimal.length() + 1);
-		} else if (bDecimal.length() > aDecimal.length()) {
-			aDecimal.insert(0, "0".repeat(bDecimal.length() - aDecimal.length() + 2), aDecimal.length(), bDecimal.length() - aDecimal.length() + 1);
-		}
+		String[] pair = Simulations.AlignDecimalPoint(a.getNumber(), b.getNumber());
+		String aInteger = pair[0].split("\\.")[0];
+		String aDecimal = pair[0].split("\\.")[1];
+		String bInteger = pair[1].split("\\.")[0];
+		String bDecimal = pair[1].split("\\.")[1];
 
 		// xFlag is needed in both Add operation and Sub operation
 		boolean xFlag = false;
@@ -79,7 +81,7 @@ public class LevelOne {
 				int tb = bDecimal.charAt(i) - '0';
 				int tr = ta - tb - (xFlag ? 1 : 0);
 
-				xFlag = tr <= -10;
+				xFlag = tr < 0;
 				if (xFlag) tr += 10;
 
 				decimalResult.insert(0, tr);
@@ -92,7 +94,7 @@ public class LevelOne {
 				int tb = bInteger.charAt(i) - '0';
 				int tr = ta - tb - (xFlag ? 1 : 0);
 
-				xFlag = tr <= -10;
+				xFlag = tr < 0;
 				if (xFlag) tr += 10;
 
 				integerResult.insert(0, tr);
