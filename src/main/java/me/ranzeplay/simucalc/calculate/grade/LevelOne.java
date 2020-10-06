@@ -40,6 +40,7 @@ public class LevelOne {
 		String bDecimal = pair[1].split("\\.")[1];
 
 		// xFlag is needed in both Add operation and Sub operation
+		// xFlag describes if 2 single bit calculation needs to be "carry" or "borrow"
 		boolean xFlag = false;
 		if (a.getOperator() == '+' && b.getOperator() == '+') {
 			// Do an Add operation
