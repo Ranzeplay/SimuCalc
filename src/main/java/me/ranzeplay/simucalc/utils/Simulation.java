@@ -48,4 +48,30 @@ public class Simulation {
 
 		return new String[]{aInteger + "." + aDecimal, bInteger + "." + bDecimal};
 	}
+
+	/**
+	 * Move decimal point left or right
+	 *
+	 * @param number a decimal number
+	 * @param digit  how many "position" to move, a negative number to move the point left, a positive number to move the point right
+	 * @return the number with moved decimal point
+	 */
+	public static String MoveDecimalPoint(String number, int digit) {
+		int decimalPointPos = number.indexOf('.');
+		int targetPosition = decimalPointPos + digit;
+
+		if (targetPosition <= 0) {
+			return MoveDecimalPoint("0".repeat(Math.abs(targetPosition + 5)) + number, digit);
+		}
+		if (targetPosition >= number.length()) {
+			return MoveDecimalPoint(number + "0".repeat(Math.abs(targetPosition + 5)), digit);
+		}
+
+		// Remove decimal point
+		number = number.replaceAll("\\.", "");
+		var result = new StringBuilder(number);
+		result.insert(targetPosition, ".");
+
+		return result.toString();
+	}
 }

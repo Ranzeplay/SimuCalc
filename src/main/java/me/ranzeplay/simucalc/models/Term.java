@@ -6,6 +6,7 @@ public class Term {
 
 	public Term(String raw) {
 		if (!raw.contains(".")) {
+			// Means the number is an integer (no decimal point)
 			raw = raw + ".0";
 		}
 

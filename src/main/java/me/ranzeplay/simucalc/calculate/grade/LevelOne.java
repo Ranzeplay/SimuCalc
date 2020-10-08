@@ -1,5 +1,6 @@
 package me.ranzeplay.simucalc.calculate.grade;
 
+import me.ranzeplay.simucalc.calculate.SomeProcess;
 import me.ranzeplay.simucalc.models.Term;
 import me.ranzeplay.simucalc.utils.Simulation;
 
@@ -39,6 +40,9 @@ public class LevelOne {
 		String bInteger = pair[1].split("\\.")[0];
 		String bDecimal = pair[1].split("\\.")[1];
 
+		var decimalResult = new StringBuilder();
+		var integerResult = new StringBuilder();
+
 		// xFlag is needed in both Add operation and Sub operation
 		// xFlag describes if 2 single bit calculation needs to be "carry" or "borrow"
 		boolean xFlag = false;
@@ -46,37 +50,32 @@ public class LevelOne {
 			// Do an Add operation
 
 			// Add decimal part
-			StringBuilder decimalResult = new StringBuilder();
 			for (int i = aDecimal.length() - 1; i >= 0; i--) {
 				int ta = aDecimal.charAt(i) - '0';
 				int tb = bDecimal.charAt(i) - '0';
 				int tr = ta + tb + (xFlag ? 1 : 0);
 
 				xFlag = tr >= 10;
-				if (xFlag) tr += 10;
+				if (xFlag) tr -= 10;
 
 				decimalResult.insert(0, tr);
 			}
 
 			// Add integer part
-			StringBuilder integerResult = new StringBuilder();
 			for (int i = aInteger.length() - 1; i >= 0; i--) {
 				int ta = aInteger.charAt(i) - '0';
 				int tb = bInteger.charAt(i) - '0';
 				int tr = ta + tb + (xFlag ? 1 : 0);
 
 				xFlag = tr >= 10;
-				if (xFlag) tr += 10;
+				if (xFlag) tr -= 10;
 
 				integerResult.insert(0, tr);
 			}
-
-			return new Term("+" + integerResult.toString() + '.' + decimalResult.toString());
 		} else if (a.getOperator() == '+' && b.getOperator() == '-') {
 			// Do a Sub operation
 
 			// Sub decimal part
-			var decimalResult = new StringBuilder();
 			for (int i = aDecimal.length() - 1; i >= 0; i--) {
 				int ta = aDecimal.charAt(i) - '0';
 				int tb = bDecimal.charAt(i) - '0';
@@ -89,7 +88,6 @@ public class LevelOne {
 			}
 
 			// Sub integer part
-			var integerResult = new StringBuilder();
 			for (int i = aInteger.length() - 1; i >= 0; i--) {
 				int ta = aInteger.charAt(i) - '0';
 				int tb = bInteger.charAt(i) - '0';
@@ -101,9 +99,9 @@ public class LevelOne {
 				integerResult.insert(0, tr);
 			}
 
-			return new Term("+" + integerResult.toString() + '.' + decimalResult.toString());
+
 		}
 
-		throw new IllegalArgumentException();
+		return new Term("+" + SomeProcess.CleanUselessZeros(integerResult.toString() + '.' + decimalResult.toString()));
 	}
 }
