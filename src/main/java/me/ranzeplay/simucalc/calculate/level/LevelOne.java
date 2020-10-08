@@ -1,8 +1,7 @@
-package me.ranzeplay.simucalc.calculate.grade;
+package me.ranzeplay.simucalc.calculate.level;
 
-import me.ranzeplay.simucalc.calculate.SomeProcess;
 import me.ranzeplay.simucalc.models.Term;
-import me.ranzeplay.simucalc.utils.Simulation;
+import me.ranzeplay.simucalc.utils.Numbers;
 
 public class LevelOne {
 	public static Term Add(Term a, Term b) {
@@ -17,7 +16,7 @@ public class LevelOne {
 		}
 
 		if (a.getOperator() == '+' && b.getOperator() == '-') {
-			if (Simulation.CompareNumberAbs(a.getNumber(), b.getNumber()) < 0) {
+			if (Numbers.CompareNumberAbs(a.getNumber(), b.getNumber()) < 0) {
 				a.setOperator('-');
 				b.setOperator('+');
 				Term result = Add(b, a);
@@ -34,7 +33,7 @@ public class LevelOne {
 
 		// Split integer part and decimal part && Align decimal point
 
-		var pair = Simulation.AlignDecimalPoint(a.getNumber(), b.getNumber());
+		var pair = Numbers.AlignDecimalPoint(a.getNumber(), b.getNumber());
 		String aInteger = pair[0].split("\\.")[0];
 		String aDecimal = pair[0].split("\\.")[1];
 		String bInteger = pair[1].split("\\.")[0];
@@ -102,6 +101,6 @@ public class LevelOne {
 
 		}
 
-		return new Term("+" + SomeProcess.CleanUselessZeros(integerResult.toString() + '.' + decimalResult.toString()));
+		return new Term("+" + Numbers.CleanUselessZeros(integerResult.toString() + '.' + decimalResult.toString()));
 	}
 }

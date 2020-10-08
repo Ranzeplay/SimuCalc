@@ -1,8 +1,6 @@
 package me.ranzeplay.simucalc.utils;
 
-import java.util.AbstractMap;
-
-public class Simulation {
+public class Numbers {
 	/**
 	 * To compare numbers in String which is bigger
 	 *
@@ -73,5 +71,21 @@ public class Simulation {
 		result.insert(targetPosition, ".");
 
 		return result.toString();
+	}
+
+	// To clean 0s on the left and right
+	// e.g. 02.350 -> 2.35    002.0690 -> 2.069
+	public static String CleanUselessZeros(String numberAbs) {
+		String regex = "^0*|0*$";
+		numberAbs = numberAbs.replaceAll(regex, "");
+
+		if (numberAbs.startsWith(".")) {
+			numberAbs  = "0" + numberAbs;
+		}
+		if (numberAbs.endsWith(".")) {
+			numberAbs = numberAbs + "0";
+		}
+
+		return numberAbs;
 	}
 }

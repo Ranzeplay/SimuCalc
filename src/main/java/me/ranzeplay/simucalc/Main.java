@@ -1,7 +1,7 @@
 package me.ranzeplay.simucalc;
 
 import me.ranzeplay.simucalc.calculate.CalcManager;
-import me.ranzeplay.simucalc.calculate.SomeProcess;
+import me.ranzeplay.simucalc.utils.Equation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class Main {
 
         // System.out.println("Equation: " + InternalInstance.Equation);
 
-        SomeProcess.SplitEquation();
+        Equation.SplitEquation();
 
         CalcManager.Do();
 

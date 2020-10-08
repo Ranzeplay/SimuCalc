@@ -1,7 +1,7 @@
 package me.ranzeplay.simucalc.calculate;
 
 import me.ranzeplay.simucalc.InternalInstance;
-import me.ranzeplay.simucalc.calculate.grade.LevelOne;
+import me.ranzeplay.simucalc.calculate.level.LevelOne;
 import me.ranzeplay.simucalc.models.Term;
 
 public class CalcManager {

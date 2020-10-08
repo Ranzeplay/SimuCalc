@@ -1,8 +1,7 @@
-package me.ranzeplay.simucalc.calculate.grade;
+package me.ranzeplay.simucalc.calculate.level;
 
-import me.ranzeplay.simucalc.calculate.SomeProcess;
 import me.ranzeplay.simucalc.models.Term;
-import me.ranzeplay.simucalc.utils.Simulation;
+import me.ranzeplay.simucalc.utils.Numbers;
 
 import java.util.ArrayList;
 
@@ -52,8 +51,8 @@ public class LevelTwo {
             result = LevelOne.Add(result, new Term("+" + s));
         }
 
-        result.setNumber(Simulation.MoveDecimalPoint(result.getNumber(), -(aDecimalLength + bDecimalLength)));
-        result.setNumber(SomeProcess.CleanUselessZeros(result.getNumber()));
+        result.setNumber(Numbers.MoveDecimalPoint(result.getNumber(), -(aDecimalLength + bDecimalLength)));
+        result.setNumber(Numbers.CleanUselessZeros(result.getNumber()));
 
         return result;
     }

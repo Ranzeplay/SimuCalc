@@ -1,7 +1,7 @@
 package me.ranzeplay.simucalc;
 
-import me.ranzeplay.simucalc.calculate.grade.LevelOne;
-import me.ranzeplay.simucalc.calculate.grade.LevelTwo;
+import me.ranzeplay.simucalc.calculate.level.LevelOne;
+import me.ranzeplay.simucalc.calculate.level.LevelTwo;
 import me.ranzeplay.simucalc.models.Term;
 import org.junit.jupiter.api.Test;
 

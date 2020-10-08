@@ -1,10 +1,10 @@
-package me.ranzeplay.simucalc.calculate;
+package me.ranzeplay.simucalc.utils;
 
 import me.ranzeplay.simucalc.Constants;
 import me.ranzeplay.simucalc.InternalInstance;
 import me.ranzeplay.simucalc.models.Term;
 
-public class SomeProcess {
+public class Equation {
 	public static void SplitEquation() {
 		InternalInstance.Equation = InternalInstance.Equation.replaceAll(" ", "");
 
@@ -27,19 +27,5 @@ public class SomeProcess {
 			firstTermFlag = true;
 		}
 		InternalInstance.Terms.add(new Term(tempRawTerm.toString()));
-	}
-
-	public static String CleanUselessZeros(String numberAbs) {
-		String regex = "^0*|0*$";
-		numberAbs = numberAbs.replaceAll(regex, "");
-
-		if (numberAbs.startsWith(".")) {
-			numberAbs  = "0" + numberAbs;
-		}
-		if (numberAbs.endsWith(".")) {
-			numberAbs = numberAbs + "0";
-		}
-
-		return numberAbs;
 	}
 }
