@@ -1,6 +1,7 @@
 package me.ranzeplay.simucalc;
 
 import me.ranzeplay.simucalc.calculate.level.LevelOne;
+import me.ranzeplay.simucalc.calculate.level.LevelThree;
 import me.ranzeplay.simucalc.calculate.level.LevelTwo;
 import me.ranzeplay.simucalc.models.Term;
 import org.junit.jupiter.api.Test;
@@ -26,5 +27,13 @@ public class TestCalculation {
 
 		assertEquals("+1024.0", LevelTwo.Times(new Term("-32"), new Term("-32")).toString());
 		assertEquals("-1024.0", LevelTwo.Times(new Term("+32"), new Term("-32")).toString());
+	}
+
+	@Test
+	public void TestLevelThreeCalculation() {
+		assertEquals("+4.0", LevelThree.Power(new Term("+2"), new Term("+2")).toString());
+		assertEquals("+1024.0", LevelThree.Power(new Term("+2"), new Term("+10")).toString());
+		assertEquals("-8.0", LevelThree.Power(new Term("-2"), new Term("+3")).toString());
+		assertEquals("+1.0", LevelThree.Power(new Term("-1"), new Term("+0")).toString());
 	}
 }
