@@ -80,7 +80,7 @@ public class Numbers {
 		numberAbs = numberAbs.replaceAll(regex, "");
 
 		if (numberAbs.startsWith(".")) {
-			numberAbs  = "0" + numberAbs;
+			numberAbs = "0" + numberAbs;
 		}
 		if (numberAbs.endsWith(".")) {
 			numberAbs = numberAbs + "0";

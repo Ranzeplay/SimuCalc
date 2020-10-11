@@ -4,6 +4,10 @@ import me.ranzeplay.simucalc.models.Term;
 import me.ranzeplay.simucalc.utils.Numbers;
 
 public class LevelOne {
+	public static Term Controller(Term a, Term b) {
+		return Add(a, b);
+	}
+
 	public static Term Add(Term a, Term b) {
 		// Pre-check convert un-calculable
 		if (a.getOperator() == '-' && b.getOperator() == '-') {

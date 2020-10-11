@@ -11,6 +11,7 @@ public class Constants {
 			new AbstractMap.SimpleEntry<>('+', 1),
 			new AbstractMap.SimpleEntry<>('-', 1),
 			new AbstractMap.SimpleEntry<>('*', 2),
-			new AbstractMap.SimpleEntry<>('/', 2))
+			new AbstractMap.SimpleEntry<>('/', 2),
+			new AbstractMap.SimpleEntry<>('^', 3))
 			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 }
