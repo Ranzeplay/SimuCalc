@@ -3,12 +3,13 @@ package me.ranzeplay.simucalc.calculate;
 import me.ranzeplay.simucalc.Constants;
 import me.ranzeplay.simucalc.InternalInstance;
 import me.ranzeplay.simucalc.calculate.level.LevelOne;
+import me.ranzeplay.simucalc.calculate.level.LevelThree;
 import me.ranzeplay.simucalc.calculate.level.LevelTwo;
 import me.ranzeplay.simucalc.models.Term;
 
 public class CalcManager {
 	public static void Do() {
-		int currentLevel = 2;
+		int currentLevel = 3;
 		while (InternalInstance.Terms.size() > 1) {
 			if (IsAvailableToDowngrade(currentLevel)) currentLevel--;
 			for (int i = 0; i < InternalInstance.Terms.size() - 1; i++) {
@@ -19,6 +20,11 @@ public class CalcManager {
 					InternalInstance.Terms.remove(a);
 					InternalInstance.Terms.remove(b);
 					switch (currentLevel) {
+						case 3:
+							result = LevelThree.Controller(a, b);
+							InternalInstance.Terms.add(i, result);
+							i = -1;
+							break;
 						case 2:
 							result = LevelTwo.Controller(a, b);
 							InternalInstance.Terms.add(i, result);
